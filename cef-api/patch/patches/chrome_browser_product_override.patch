@@ -1,0 +1,44 @@
+diff --git chrome/browser/chrome_content_browser_client.cc chrome/browser/chrome_content_browser_client.cc
+index b7ff92ae4e58..6c3773b92454 100644
+--- chrome/browser/chrome_content_browser_client.cc
++++ chrome/browser/chrome_content_browser_client.cc
+@@ -996,10 +996,6 @@ void LaunchURL(const GURL& url,
+   }
+ }
+ 
+-std::string GetProduct() {
+-  return version_info::GetProductNameAndVersionForUserAgent();
+-}
+-
+ void MaybeAppendSecureOriginsAllowlistSwitch(base::CommandLine* cmdline) {
+   // |allowlist| combines pref/policy + cmdline switch in the browser process.
+   // For renderer and utility (e.g. NetworkService) processes the switch is the
+@@ -1094,6 +1090,14 @@ void MaybeRecordSameSiteCookieEngagementHistogram(
+ 
+ }  // namespace
+ 
++std::string GetProduct() {
++  base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
++  if (command_line->HasSwitch(switches::kProductVersion))
++    return command_line->GetSwitchValueASCII(switches::kProductVersion);
++
++  return version_info::GetProductNameAndVersionForUserAgent();
++}
++
+ std::string GetUserAgent() {
+   base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
+   if (command_line->HasSwitch(switches::kUserAgent)) {
+diff --git chrome/browser/chrome_content_browser_client.h chrome/browser/chrome_content_browser_client.h
+index ae86be8afe0f..61be54670431 100644
+--- chrome/browser/chrome_content_browser_client.h
++++ chrome/browser/chrome_content_browser_client.h
+@@ -91,7 +91,8 @@ class ChromeXrIntegrationClient;
+ }
+ #endif
+ 
+-// Returns the user agent of Chrome.
++// Returns the product and user agent of Chrome.
++std::string GetProduct();
+ std::string GetUserAgent();
+ 
+ blink::UserAgentMetadata GetUserAgentMetadata();
