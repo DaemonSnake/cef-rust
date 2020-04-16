@@ -5,5 +5,9 @@ authors = ["DaemonSnake(Bastien Penavayre) <bastienPenava@gmail.com>"]
 edition = "2018"
 repository = "git@github.com:DaemonSnake/cef-rust.git"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+links = "cef"
+build = "build.rs"
 
-[dependencies]
+[build-dependencies]
+cmake = "0.1"
+bindgen = "0.53.2"
