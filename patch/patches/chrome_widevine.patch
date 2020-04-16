@@ -1,0 +1,12 @@
+diff --git third_party/widevine/cdm/BUILD.gn third_party/widevine/cdm/BUILD.gn
+index 1919784f5f93..6a8d2d5140f2 100644
+--- third_party/widevine/cdm/BUILD.gn
++++ third_party/widevine/cdm/BUILD.gn
+@@ -5,6 +5,7 @@
+ import("//build/buildflag_header.gni")
+ import("//build/config/chrome_build.gni")
+ import("//build/config/features.gni")
++import("//cef/libcef/features/features.gni")
+ import("//media/cdm/library_cdm/cdm_paths.gni")
+ import("//media/media_options.gni")
+ import("//third_party/widevine/cdm/widevine.gni")
