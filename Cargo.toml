@@ -11,3 +11,5 @@ build = "build.rs"
 [build-dependencies]
 cmake = "0.1"
 bindgen = "0.53.2"
+scraper = "0.11.0"
+reqwest = "*"

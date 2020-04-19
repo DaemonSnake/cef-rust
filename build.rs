@@ -23,3 +23,6 @@ fn get_proc() -> &'static str {
       panic!("");
    }
 }
+
+fn main() {
+}
