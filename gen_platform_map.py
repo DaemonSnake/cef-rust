@@ -1,3 +1,8 @@
+#
+# This script generates platform_map.json
+# It maps to each supported platform the download link to the latest version of the minimal build
+#
+
 from html.parser import HTMLParser
 from urllib import request
 from json import dump
