@@ -35,7 +35,8 @@ fn get_proc() -> &'static str {
 }
 
 fn cef_folder(platform: &String) -> PathBuf {
-   let s = format!("./cef_builds/{}/", &platform);
+   let folder = env_var("OUT_DIR").unwrap();
+   let s = format!("{}/cef_builds/{}/", folder, &platform);
    PathBuf::from(s)
 }
 
