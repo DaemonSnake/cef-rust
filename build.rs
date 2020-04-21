@@ -13,7 +13,7 @@ fn get_os() -> &'static str {
       "linux"
    } else if cfg!(target_os = "windows") {
       "windows"
-   } else if cfg!(target_os = "mac") {
+   } else if cfg!(target_os = "macos") {
       "macosx"
    } else {
       panic!("Unsupported OS");
