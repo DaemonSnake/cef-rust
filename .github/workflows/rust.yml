@@ -38,6 +38,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: cargo build --verbose
+    - name: Install lib-llvm
+      shell: powershell
+      run: |
+        Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+        scoop install llvm --global
     - name: Run tests
       run: cargo test --verbose
     - name: Package
