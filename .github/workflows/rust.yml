@@ -43,7 +43,13 @@ jobs:
         scoop install llvm --global
     - name: Build
       run: cargo build --verbose
+      env:
+        LIBCLANG_PATH:  'C:\ProgramData\scoop\apps\llvm\current\lib\'
     - name: Run tests
       run: cargo test --verbose
+      env:
+        LIBCLANG_PATH:  'C:\ProgramData\scoop\apps\llvm\current\lib\'
     - name: Package
       run: cargo package --verbose
+      env:
+        LIBCLANG_PATH:  'C:\ProgramData\scoop\apps\llvm\current\lib\'
